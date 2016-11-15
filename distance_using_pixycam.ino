@@ -30,6 +30,8 @@
  
 #define Calibrate 0 //Change to 1 see above for details.
 #define calDistance 24 //in inches 24inches or 2 foot
+#define LCD 1 //Display Average Distance to Parallax 1602 serial LCD otherwise Zero will display much more information to serial console and/or LCD if connected
+
 
 int calWidth = 40; //Calibrated width reading
 int calHeight = 29; //Calibrated height reading
@@ -80,7 +82,7 @@ void loop()
 
       if (Calibrate) {
           sprintf(buf, "Detected %d:\n", blocks);
-      Serial.print(buf);
+      Serial.print(buf); 
       for (j=0; j<blocks; j++)
       {
         sprintf(buf, "  block %d: ", j);
@@ -90,9 +92,11 @@ void loop()
     }
         
        else {
-      
+
+          if (LCD) { } else {
       sprintf(buf, "Detected %d:\n", blocks);
       Serial.print(buf);
+          }
       for (j=0; j<blocks; j++)
       {
         //sprintf(buf, "  block %d: ", j);
@@ -101,6 +105,11 @@ void loop()
         pixelsHeight = pixy.blocks[j].height;
         distanceWidth = (widthOfObject * focalLengthWidth) / pixelsWidth;
         distanceHeight = (heightOfObject * focalLengthHeight) / pixelsHeight;
+        if (LCD) { 
+          Serial.print("Average: ");
+          Serial.print((distanceWidth + distanceHeight)/2);
+          Serial.println("in. "); 
+              } else {
         Serial.print("Width: ");
         Serial.print(pixelsWidth);
         Serial.print(" Height: ");
@@ -119,4 +128,5 @@ void loop()
      }
     }  
   }
+}
 }
