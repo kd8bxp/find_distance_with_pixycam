@@ -43,6 +43,9 @@ float widthOfObject = 3.75; //inches (3.75 inches) real size of your object
 float heightOfObject = 2.5; //inches (2.5 inches) real size of your object
 int focalLengthWidth;  //calculated focal length for width
 int focalLengthHeight; //calculated focal length for height
+float avg;
+int feet;
+int inches;
 
 //Formula = FocalLengthWidth = (pixels * knowdistanceininches) / widthOfObject
 //Distance = (widthOfObject * FocalLengthWidth) / pixelsWidth
@@ -107,11 +110,21 @@ void loop()
         pixelsHeight = pixy.blocks[j].height;
         distanceWidth = (widthOfObject * focalLengthWidth) / pixelsWidth;
         distanceHeight = (heightOfObject * focalLengthHeight) / pixelsHeight;
+        avg = (distanceWidth + distanceHeight)/2;
+        avg = round(avg);
+        feet = avg/12;
+        inches = int(avg) % 12;
+        
         if (LCD) { 
           Serial.write(128);
           Serial.print("Average: ");
-          Serial.print((distanceWidth + distanceHeight)/2);
-          Serial.println("in"); 
+          Serial.print(avg);
+          Serial.print("in");
+          Serial.write(148);
+          Serial.print(feet);
+          Serial.print(" ft. ");
+          Serial.print(inches);
+          Serial.print(" in."); 
               } else {
         Serial.print("Width: ");
         Serial.print(pixelsWidth);
@@ -125,8 +138,12 @@ void loop()
         Serial.print("in. Angle:");
         Serial.println(pixy.blocks[j].angle);
         Serial.print("Average: ");
-        Serial.print((distanceWidth + distanceHeight)/2);
-        Serial.println("in. ");
+        Serial.print(avg);
+        Serial.print("in. ");
+        Serial.print(feet);
+        Serial.print(" ft. ");
+        Serial.print(inches);
+        Serial.println(" in.");
        }
      }
     }  
