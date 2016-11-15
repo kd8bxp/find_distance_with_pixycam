@@ -54,6 +54,8 @@ void setup()
 {
   Serial.begin(9600); // 9600 baud for the serial *console* (not for the UART connected to Pixy)
   Serial.print("Starting...\n");
+
+  if (LCD) { Serial.write(17); }
   
   pixy.init();
   //calculate focal length
@@ -106,9 +108,10 @@ void loop()
         distanceWidth = (widthOfObject * focalLengthWidth) / pixelsWidth;
         distanceHeight = (heightOfObject * focalLengthHeight) / pixelsHeight;
         if (LCD) { 
+          Serial.write(128);
           Serial.print("Average: ");
           Serial.print((distanceWidth + distanceHeight)/2);
-          Serial.println("in. "); 
+          Serial.println("in"); 
               } else {
         Serial.print("Width: ");
         Serial.print(pixelsWidth);
