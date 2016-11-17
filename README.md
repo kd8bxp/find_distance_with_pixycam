@@ -2,8 +2,8 @@
 
 ## Installation
 
-Please read the information contained in the sketch, I will be making a 
-instructable shortly for this.
+Please read the information contained in the sketch, Instructable can be found here:
+http://www.instructables.com/id/Using-a-PixyCam-CMUcam5-to-Get-Distance-of-a-Known
 
 ## Things To Do
 
