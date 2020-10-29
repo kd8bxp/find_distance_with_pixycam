@@ -19,7 +19,7 @@
  * 
  */
  
-#include "Pixy.h"
+#include "src/Pixy/Pixy.h"
 
 /*Calibrate using a tape measure or ruler, set your pixycam 2 foot from the color coded object
  * In the serial monitor, take a few reading of for the width and height.

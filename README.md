@@ -5,6 +5,10 @@
 Please read the information contained in the sketch, Instructable can be found here:
 http://www.instructables.com/id/Using-a-PixyCam-CMUcam5-to-Get-Distance-of-a-Known
 
+## Libraries
+
+Because the Arduino IDE has been getting pretty bad handling libraries, I've included the libraries used in the src directory of the sketch. These libraries may have been slightly modified to work from the sketch directory, and do not include the examples.  
+
 ## Things To Do
 
 Doesn't take much to setup, you will need a tape measure, some different color paper, card board, glue, a OLED or LCD display, and have the pixy mon software installed and working.
